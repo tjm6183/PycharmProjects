@@ -20,9 +20,9 @@ class CarManager(Turtle):
     def generate_car(self):
         self.shape("square")
         self.color(COLORS[random.randrange(0, 6)])
-        self.shapesize(stretch_wid=1, stretch_len=2)
+        self.shapesize(stretch_wid=1.2, stretch_len=2)
         self.penup()
-        self.goto(random.randint(100, 500), random.randint(-250, 300))
+        self.goto(random.randint(200, 900), random.randint(-250, 300))
 
     def move(self):
         new_x = self.xcor() - self.x_move
@@ -30,6 +30,14 @@ class CarManager(Turtle):
         self.goto(new_x, new_y)
 
     def back_to_right(self):
-        new_x = 400
+        new_x = self.xcor() + 800
         new_y = random.randint(-250, 300)
+        self.goto(new_x, new_y)
+
+    def speed_up(self):
+        self.move_speed *= .8
+
+    def stop(self):
+        new_x = self.xcor()
+        new_y = self.ycor()
         self.goto(new_x, new_y)
